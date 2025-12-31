@@ -1,0 +1,22 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
+
+print(Fore.RED + 'This text is red')
+print(Fore.GREEN + 'This text is green')    
+print(Back.BLUE + 'This text has a blue background')
+print(Style.DIM + 'This text is dimmed')
+print(Style.BRIGHT + 'This text is bright')
+print(Fore.YELLOW + Back.MAGENTA + Style.BRIGHT + 'This text is yellow with a magenta background and bright style')
+print('This text is normal again')
+print(Fore.CYAN + 'This text is cyan')
+print(Style.RESET_ALL + 'Styles have been reset to normal')
+print(Back.WHITE + Fore.BLACK + 'This text has a white background with black text')
+print(Style.BRIGHT + Fore.MAGENTA + 'This text is bright magenta')
+print(Fore.GREEN + Style.DIM + 'This text is dim green')
+print(Back.RED + 'This text has a red background')
+print(Fore.BLUE + Style.BRIGHT + 'This text is bright blue')
+print(Style.RESET_ALL + 'All styles reset to default')
+print(Fore.YELLOW + 'This text is yellow')
+print(Back.CYAN + 'This text has a cyan background')
+print(Style.DIM + 'This text is dimmed again')
