@@ -1,0 +1,94 @@
+#:kivy 2.0.0
+
+# ---------- SAFE ANIMATED BUTTON ----------
+<AnimButton@Button>:
+    background_normal: ""
+    background_color: 0, 0, 0, 0
+    color: 1,1,1,1
+    font_name: "Roboto"
+    font_size: "18sp"
+
+    # animation property
+    press_alpha: 1
+
+    canvas.before:
+        Color:
+            rgba: .22, .74, .97, self.press_alpha
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [16]
+
+    on_press:
+        press_alpha: .6
+    on_release:
+        press_alpha: 1
+
+
+# ---------- MAIN UI ----------
+BoxLayout:
+    orientation: "vertical"
+    padding: 15
+    spacing: 15
+
+    Label:
+        id: time
+        markup: True
+        font_size: "48sp"
+        text: "[b]00:00:00[/b]"
+        color: 1,1,1,1
+
+    Label:
+        id: stopwatch
+        markup: True
+        font_size: "36sp"
+        text: "00:00.[size=32]00[/size]"
+        color: .7,.8,1,1
+
+    BoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        spacing: 10
+
+        AnimButton:
+            id: start_stop
+            text: "Start"
+            on_release: app.start_stop()
+
+        AnimButton:
+            text: "Reset"
+            on_release: app.reset()
+
+        AnimButton:
+            text: "Lap"
+            on_release: app.add_lap()
+
+    ScrollView:
+        size_hint_y: .4
+
+        BoxLayout:
+            id: lap_box
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 5
+
+    Label:
+        text: "Alarm (HH:MM:SS)"
+        color: 1,1,1,1
+
+    TextInput:
+        id: alarm_input
+        hint_text: "14:30:00"
+        size_hint_y: None
+        height: "40dp"
+        multiline: False
+
+    AnimButton:
+        text: "Set Alarm"
+        on_release: app.set_alarm()
+
+    Label:
+        id: alarm_status
+        text: ""
+        color: 1,0.4,0.4,1
